@@ -41,7 +41,7 @@ function ModalPopup() {
               className="w-16 h-16"
             />
           </div>
-          <h2 className="text-lg font-semibold text-gray-900 text-center mb-2">
+          <h2 className="text-lg font-bold text-gray-900 text-center mb-2">
             How to Redeem Coins?
           </h2>
           <div className="space-y-3">
