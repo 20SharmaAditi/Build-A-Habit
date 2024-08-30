@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Modal } from "antd";
+import Lottie from "lottie-react";
+import coin from "../animations/coin.json"; // Adjust the path as needed
 
 function ModalPopup() {
   const [visible, setVisible] = useState(false);
@@ -25,57 +27,58 @@ function ModalPopup() {
         Open Modal
       </button>
       <Modal
-        title={
-          <h2 className="text-lg font-semibold text-gray-900 text-center">
-            How to Redeem Coins?
-          </h2>
-        }
         visible={visible}
         onCancel={handleCancel}
         footer={null}
-        className="rounded-lg p-0" // Removed extra padding to minimize modal size
+        className="rounded-lg p-0 max-w-md"
         centered
       >
         <div className="p-4 bg-white rounded-lg shadow-lg">
+          <div className="flex flex-col items-center mb-2">
+            <Lottie
+              animationData={coin}
+              loop={true} // Loop animation if desired
+              className="w-16 h-16"
+            />
+          </div>
+          <h2 className="text-lg font-semibold text-gray-900 text-center mb-2">
+            How to Redeem Coins?
+          </h2>
           <div className="space-y-3">
-            {" "}
-            {/* Reduced space between elements */}
-            <p className="text-sm text-gray-600">
-              {" "}
-              {/* Smaller text for compactness */}
-              You can redeem before making the final payment for your next
+            <p className="text-sm text-gray-600 text-center">
+              You can redeem coins before making the final payment for your next
               order.
             </p>
-            <div className="flex justify-between items-center bg-gray-100 p-2 rounded-lg">
+            <div className="flex justify-between items-start bg-gray-100 p-3 rounded-lg">
               <span className="font-semibold text-sm text-gray-800">
                 MAXIMUM DISCOUNT
               </span>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 ml-4 flex-1 text-right">
                 20% including the discount from coupons.
               </p>
             </div>
-            <div className="flex justify-between items-center bg-gray-100 p-2 rounded-lg">
+            <div className="flex justify-between items-start bg-gray-100 p-3 rounded-lg">
               <span className="font-semibold text-sm text-gray-800">
                 COIN CONVERSION
               </span>
-              <div className="flex flex-col text-sm text-gray-600">
+              <div className="text-sm text-gray-600 text-right flex-1 ml-8">
                 <p>10 coins = ₹1</p>
                 <p>Coins cannot be exchanged for cash</p>
                 <p>Redeem for discounts only</p>
               </div>
             </div>
-            <div className="flex justify-between items-center bg-gray-100 p-2 rounded-lg">
+            <div className="flex justify-between items-start bg-gray-100 p-3 rounded-lg">
               <span className="font-semibold text-sm text-gray-800">
                 COIN EXPIRY
               </span>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 ml-8 flex-1 text-right">
                 Coins will expire after 90 days from the date of credit.
               </p>
             </div>
           </div>
           <button
             onClick={handleGotIt}
-            className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition duration-200 w-full"
+            className="mt-4 bg-[#A1BD13] text-white px-4 py-2 rounded-lg shadow hover:bg-[#8AA211] transition duration-200 w-full"
           >
             Got it
           </button>
