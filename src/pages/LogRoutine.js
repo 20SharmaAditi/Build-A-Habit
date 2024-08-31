@@ -292,7 +292,7 @@ function App() {
                   borderColor: hairRasDaily ? "#A1BD13" : "black",
                 }}
               >
-                <div className="absolute bg-black right-[180px] top-[50%] transform -translate-y-1/2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[150px]">
+                <div className="absolute bg-black right-[180px] top-[50%] transform -translate-y-1/2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[120px]">
                   <h4 className="text-sm text-blue-400 mb-2">WIN 100 COINS</h4>
                   <p className="text-white text-sm">
                     Did you take your supplement? Check the box if yes.
