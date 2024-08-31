@@ -26,6 +26,8 @@ function App() {
 
   const [selectedItems, setSelectedItems] = useState([]);
 
+  const [showTooltip, setShowTooltip] = useState(true);
+
   function addElement(arr, element) {
     if (!arr.includes(element)) {
       setSelectedItems([...arr, element]);
@@ -36,64 +38,50 @@ function App() {
     setSelectedItems(arr.filter((item) => item !== element));
   }
 
-  const handleHairRasDailyCheckBox = () => {
-    if (hairRasDaily) {
-      removeElement(selectedItems, "Hair Ras");
+  const handleCheckboxChange = (isChecked, item) => {
+    if (isChecked) {
+      addElement(selectedItems, item);
+      setShowTooltip(false);
     } else {
-      addElement(selectedItems, "Hair Ras");
+      removeElement(selectedItems, item);
+      setShowTooltip(true);
     }
+  };
 
-    setHairRasDaily(!hairRasDaily);
+  const handleHairRasDailyCheckBox = () => {
+    const newValue = !hairRasDaily;
+    handleCheckboxChange(newValue, "Hair Ras");
+    setHairRasDaily(newValue);
   };
 
   const handleGuttShuddhiMorningCheckBox = () => {
-    if (guttShuddhiMorning) {
-      removeElement(selectedItems, "Gutt Suddhi");
-    } else {
-      addElement(selectedItems, "Gutt Suddhi");
-    }
-
-    setGuttShuddhiMorning(!guttShuddhiMorning);
+    const newValue = !guttShuddhiMorning;
+    handleCheckboxChange(newValue, "Gutt Suddhi");
+    setGuttShuddhiMorning(newValue);
   };
 
   const handleGuttShuddhiEveningCheckBox = () => {
-    if (guttShuddhiEvening) {
-      removeElement(selectedItems, "Gutt Suddhi");
-    } else {
-      addElement(selectedItems, "Gutt Suddhi");
-    }
-
-    setGuttShuddhiEvening(!guttShuddhiEvening);
+    const newValue = !guttShuddhiEvening;
+    handleCheckboxChange(newValue, "Gutt Suddhi");
+    setGuttShuddhiEvening(newValue);
   };
 
   const handleHairWeeklyOneCheckBox = () => {
-    if (hairRasWeekly1) {
-      removeElement(selectedItems, "Hair Ras");
-    } else {
-      addElement(selectedItems, "Hair Ras");
-    }
-
-    setHairRasWeekly1(!hairRasWeekly1);
+    const newValue = !hairRasWeekly1;
+    handleCheckboxChange(newValue, "Hair Ras");
+    setHairRasWeekly1(newValue);
   };
 
   const handleHairWeeklyTwoCheckBox = () => {
-    if (hairRasWeekly2) {
-      removeElement(selectedItems, "Hair Ras");
-    } else {
-      addElement(selectedItems, "Hair Ras");
-    }
-
-    setHairRasWeekly2(!hairRasWeekly2);
+    const newValue = !hairRasWeekly2;
+    handleCheckboxChange(newValue, "Hair Ras");
+    setHairRasWeekly2(newValue);
   };
 
   const handleHairWeeklyThreeCheckBox = () => {
-    if (hairRasWeekly3) {
-      removeElement(selectedItems, "Hair Ras");
-    } else {
-      addElement(selectedItems, "Hair Ras");
-    }
-
-    setHairRasWeekly3(!hairRasWeekly3);
+    const newValue = !hairRasWeekly3;
+    handleCheckboxChange(newValue, "Hair Ras");
+    setHairRasWeekly3(newValue);
   };
 
   const handleBackClick = () => {
@@ -122,21 +110,26 @@ function App() {
     if (!isCelebrating) {
       setIsCelebrating(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
+
       setTimeout(() => {
         setIsCelebrating(false);
         setIsLoading(true);
+
         setTimeout(() => {
           setIsLoading(false);
           setShowReward(true);
-        }, 3000);
-      }, 5000);
+        }, 2000);
+      }, 100);
     } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
       setIsLoading(true);
+      setShowReward(false);
+
       setTimeout(() => {
-        setIsLoading(false);
-        setShowReward(true);
-      }, 3000);
+        setTimeout(() => {
+          setIsLoading(false);
+          setShowReward(true);
+        }, 2000);
+      }, 100);
     }
   };
 
@@ -283,8 +276,8 @@ function App() {
               </div>
             </div>
 
-            <div className="flex flex-col items-center">
-              <p className="text-md text-blue-400 mb-4">ONCE DAILY</p>
+            <div className="flex flex-col items-end">
+              <p className="text-sm text-blue-400 mb-4">ONCE DAILY</p>
               <div
                 className="flex items-center justify-between mb-3 border  border-[#DAEBF1] rounded-md px-2 py-[2px] w-full relative group"
                 style={{
@@ -292,12 +285,16 @@ function App() {
                   borderColor: hairRasDaily ? "#A1BD13" : "black",
                 }}
               >
-                <div className="absolute bg-black right-[180px] top-[50%] transform -translate-y-1/2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[120px]">
-                  <h4 className="text-sm text-blue-400 mb-2">WIN 100 COINS</h4>
-                  <p className="text-white text-sm">
-                    Did you take your supplement? Check the box if yes.
-                  </p>
-                </div>
+                {showTooltip && (
+                  <div className="absolute bg-black right-[180px] top-[50%] transform -translate-y-1/2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[120px]">
+                    <h4 className="text-sm text-blue-400 mb-2">
+                      WIN 100 COINS!!!!
+                    </h4>
+                    <p className="text-white text-sm">
+                      Did you take your supplement? Check the box if yes.
+                    </p>
+                  </div>
+                )}
 
                 <p className="mr-2">1 Tablet (Morning)</p>
                 <input
@@ -331,8 +328,8 @@ function App() {
               </div>
             </div>
 
-            <div className="flex flex-col items-center">
-              <p className="text-md text-blue-400 mb-4">TWICE DAILY</p>
+            <div className="flex flex-col items-end">
+              <p className="text-sm text-blue-400 mb-4">TWICE DAILY</p>
               <div
                 className="flex items-center justify-between mb-3 border border-black rounded-md px-2 py-[2px] w-full relative group"
                 style={{
@@ -342,12 +339,16 @@ function App() {
                   borderColor: guttShuddhiMorning ? "#A1BD13" : "black",
                 }}
               >
-                <div className="absolute bg-black right-[180px] top-[50%] transform -translate-y-1/2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[200px]">
-                  <h4 className="text-sm text-blue-400 mb-2">WIN 100 COINS</h4>
-                  <p className="text-white text-sm">
-                    Did you take your morning supplement? Check the box if yes.
-                  </p>
-                </div>
+                {showTooltip && (
+                  <div className="absolute bg-black right-[180px] top-[50%] transform -translate-y-1/2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[120px]">
+                    <h4 className="text-sm text-blue-400 mb-2">
+                      WIN 100 COINS!!!!
+                    </h4>
+                    <p className="text-white text-sm">
+                      Did you take your supplement? Check the box if yes.
+                    </p>
+                  </div>
+                )}
 
                 <p className="mr-2">1 Tablet (Morning)</p>
                 <input
@@ -372,12 +373,16 @@ function App() {
                   borderColor: guttShuddhiEvening ? "#A1BD13" : "black",
                 }}
               >
-                <div className="absolute bg-black right-[180px] top-[50%] transform -translate-y-1/2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[200px]">
-                  <h4 className="text-sm text-blue-400 mb-2">WIN 100 COINS</h4>
-                  <p className="text-white text-sm">
-                    Did you take your morning supplement? Check the box if yes.
-                  </p>
-                </div>
+                {showTooltip && (
+                  <div className="absolute bg-black right-[180px] top-[50%] transform -translate-y-1/2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[120px]">
+                    <h4 className="text-sm text-blue-400 mb-2">
+                      WIN 100 COINS!!!!
+                    </h4>
+                    <p className="text-white text-sm">
+                      Did you take your supplement? Check the box if yes.
+                    </p>
+                  </div>
+                )}
 
                 <p className="mr-2">1 Tablet (Evening)</p>
                 <input
@@ -412,8 +417,8 @@ function App() {
               </div>
             </div>
 
-            <div className="flex flex-col items-center">
-              <p className="text-md text-blue-400 mb-4">USE 3 TIMES A WEEK</p>
+            <div className="flex flex-col items-end">
+              <p className="text-sm text-blue-400 mb-4">USE 3 TIMES A WEEK</p>
 
               <div
                 className="flex items-center justify-between mb-2 border border-[1px] border-black rounded-md px-2 py-[2px] w-full relative group"
@@ -422,12 +427,17 @@ function App() {
                   borderColor: hairRasWeekly1 ? "#A1BD13" : "black",
                 }}
               >
-                <div className="absolute bg-black right-[180px] top-[50%] transform -translate-y-1/2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[200px]">
-                  <h4 className="text-sm text-blue-400 mb-2">WIN 100 COINS</h4>
-                  <p className="text-white text-sm">
-                    Did you take your supplement? Check the box if yes.
-                  </p>
-                </div>
+                {showTooltip && (
+                  <div className="absolute bg-black right-[180px] top-[50%] transform -translate-y-1/2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[120px]">
+                    <h4 className="text-sm text-blue-400 mb-2">
+                      WIN 100 COINS!!!!
+                    </h4>
+                    <p className="text-white text-sm">
+                      Did you take your supplement? Check the box if yes.
+                    </p>
+                  </div>
+                )}
+
                 <p className="mr-2">1 Tablet (1st time)</p>
                 <input
                   type="checkbox"
@@ -449,12 +459,17 @@ function App() {
                   borderColor: hairRasWeekly2 ? "#A1BD13" : "black",
                 }}
               >
-                <div className="absolute bg-black right-[180px] top-[50%] transform -translate-y-1/2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[200px]">
-                  <h4 className="text-sm text-blue-400 mb-2">WIN 100 COINS</h4>
-                  <p className="text-white text-sm">
-                    Did you take your supplement? Check the box if yes.
-                  </p>
-                </div>
+                {showTooltip && (
+                  <div className="absolute bg-black right-[180px] top-[50%] transform -translate-y-1/2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[120px]">
+                    <h4 className="text-sm text-blue-400 mb-2">
+                      WIN 100 COINS!!!!
+                    </h4>
+                    <p className="text-white text-sm">
+                      Did you take your supplement? Check the box if yes.
+                    </p>
+                  </div>
+                )}
+
                 <p className="mr-2">1 Tablet (2nd time)</p>
                 <input
                   type="checkbox"
@@ -476,12 +491,16 @@ function App() {
                   borderColor: hairRasWeekly3 ? "#A1BD13" : "black",
                 }}
               >
-                <div className="absolute bg-black right-[180px] top-[50%] transform -translate-y-1/2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[200px]">
-                  <h4 className="text-sm text-blue-400 mb-2">WIN 100 COINS</h4>
-                  <p className="text-white text-sm">
-                    Did you take your supplement? Check the box if yes.
-                  </p>
-                </div>
+                {showTooltip && (
+                  <div className="absolute bg-black right-[180px] top-[50%] transform -translate-y-1/2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[120px]">
+                    <h4 className="text-sm text-blue-400 mb-2">
+                      WIN 100 COINS!!!!
+                    </h4>
+                    <p className="text-white text-sm">
+                      Did you take your supplement? Check the box if yes.
+                    </p>
+                  </div>
+                )}
 
                 <p className="mr-2">1 Tablet (3rd time)</p>
                 <input
