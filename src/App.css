@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%) scale(0.3);
+    opacity: 0;
+  }
+  40% {
+    transform: translateX(-20%) scale(1.1);
+    opacity: 1;
+  }
+  60% {
+    transform: translateX(10%) scale(0.9);
+  }
+  80% {
+    transform: translateX(-5%) scale(1.05);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
+
+.slide-in {
+  animation: slideIn 1.2s ease-out forwards;
+}
