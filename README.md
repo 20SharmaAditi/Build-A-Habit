@@ -1,3 +1,20 @@
+*BUILD A HABIT*
+
+Overview
+The Daily Hair Routine Tracker is a web application designed to help users keep track of their daily and weekly supplement intake. It provides a simple interface for users to mark off their completed routines and rewards them for consistency with coins. The application also includes a modal for redeeming coins and celebrates users' achievements with an animation.
+
+Features
+Track daily and weekly supplement intake with checkboxes.
+Receive rewards for completing all required tasks.
+View a celebratory animation upon achieving a reward.
+Access a modal with instructions on how to redeem coins.
+Technologies Used
+React: A JavaScript library for building user interfaces.
+Tailwind CSS: A utility-first CSS framework for styling.
+Lottie: A library for rendering animations created with Adobe After Effects.
+React Router: A library for handling routing in React applications.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
