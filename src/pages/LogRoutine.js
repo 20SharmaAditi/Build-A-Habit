@@ -286,13 +286,13 @@ function App() {
             <div className="flex flex-col items-center">
               <p className="text-md text-blue-400 mb-4">ONCE DAILY</p>
               <div
-                className="flex items-center justify-between mb-3 border  border-[#DAEBF1] rounded-md px-2 py-[2px] w-full relative group"
+                className="flex items-center justify-between mb-3 border border-[#DAEBF1] rounded-md px-2 py-[2px] w-full relative group"
                 style={{
                   backgroundColor: hairRasDaily ? "#F3F7DE" : "transparent",
                   borderColor: hairRasDaily ? "#A1BD13" : "black",
                 }}
               >
-                <div className="absolute bg-black right-[180px] top-[50%] transform -translate-y-1/2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[200px]">
+                <div className="absolute bg-black left-0 bottom-full mb-2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[200px]">
                   <h4 className="text-sm text-blue-400 mb-2">WIN 100 COINS</h4>
                   <p className="text-white text-sm">
                     Did you take your morning supplement? Check the box if yes.
@@ -342,7 +342,7 @@ function App() {
                   borderColor: guttShuddhiMorning ? "#A1BD13" : "black",
                 }}
               >
-                <div className="absolute bg-black right-[180px] top-[50%] transform -translate-y-1/2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[200px]">
+                <div className="absolute bg-black left-0 bottom-full mb-2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[200px]">
                   <h4 className="text-sm text-blue-400 mb-2">WIN 100 COINS</h4>
                   <p className="text-white text-sm">
                     Did you take your morning supplement? Check the box if yes.
@@ -372,7 +372,7 @@ function App() {
                   borderColor: guttShuddhiEvening ? "#A1BD13" : "black",
                 }}
               >
-                <div className="absolute bg-black right-[180px] top-[50%] transform -translate-y-1/2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[200px]">
+                <div className="absolute bg-black left-0 bottom-full mb-2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[200px]">
                   <h4 className="text-sm text-blue-400 mb-2">WIN 100 COINS</h4>
                   <p className="text-white text-sm">
                     Did you take your morning supplement? Check the box if yes.
@@ -422,12 +422,13 @@ function App() {
                   borderColor: hairRasWeekly1 ? "#A1BD13" : "black",
                 }}
               >
-                <div className="absolute bg-black right-[180px] top-[50%] transform -translate-y-1/2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[200px]">
+                <div className="absolute bg-black left-0 bottom-full mb-2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[200px]">
                   <h4 className="text-sm text-blue-400 mb-2">WIN 100 COINS</h4>
                   <p className="text-white text-sm">
-                    Did you take your supplement? Check the box if yes.
+                    Did you take your morning supplement? Check the box if yes.
                   </p>
                 </div>
+
                 <p className="mr-2">1 Tablet (1st time)</p>
                 <input
                   type="checkbox"
@@ -449,12 +450,13 @@ function App() {
                   borderColor: hairRasWeekly2 ? "#A1BD13" : "black",
                 }}
               >
-                <div className="absolute bg-black right-[180px] top-[50%] transform -translate-y-1/2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[200px]">
+                <div className="absolute bg-black left-0 bottom-full mb-2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[200px]">
                   <h4 className="text-sm text-blue-400 mb-2">WIN 100 COINS</h4>
                   <p className="text-white text-sm">
-                    Did you take your supplement? Check the box if yes.
+                    Did you take your morning supplement? Check the box if yes.
                   </p>
                 </div>
+
                 <p className="mr-2">1 Tablet (2nd time)</p>
                 <input
                   type="checkbox"
@@ -476,10 +478,10 @@ function App() {
                   borderColor: hairRasWeekly3 ? "#A1BD13" : "black",
                 }}
               >
-                <div className="absolute bg-black right-[180px] top-[50%] transform -translate-y-1/2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[200px]">
+                <div className="absolute bg-black left-0 bottom-full mb-2 text-white text-xs rounded py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer w-[200px]">
                   <h4 className="text-sm text-blue-400 mb-2">WIN 100 COINS</h4>
                   <p className="text-white text-sm">
-                    Did you take your supplement? Check the box if yes.
+                    Did you take your morning supplement? Check the box if yes.
                   </p>
                 </div>
 
