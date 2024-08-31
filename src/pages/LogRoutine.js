@@ -24,6 +24,78 @@ function App() {
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
+  const [selectedItems, setSelectedItems] = useState([]);
+
+  function addElement(arr, element) {
+    if (!arr.includes(element)) {
+      setSelectedItems([...arr, element]);
+    }
+  }
+
+  function removeElement(arr, element) {
+    setSelectedItems(arr.filter((item) => item !== element));
+  }
+
+  const handleHairRasDailyCheckBox = () => {
+    if (hairRasDaily) {
+      removeElement(selectedItems, "Hair Ras");
+    } else {
+      addElement(selectedItems, "Hair Ras");
+    }
+
+    setHairRasDaily(!hairRasDaily);
+  };
+
+  const handleGuttShuddhiMorningCheckBox = () => {
+    if (guttShuddhiMorning) {
+      removeElement(selectedItems, "Gutt Suddhi");
+    } else {
+      addElement(selectedItems, "Gutt Suddhi");
+    }
+
+    setGuttShuddhiMorning(!guttShuddhiMorning);
+  };
+
+  const handleGuttShuddhiEveningCheckBox = () => {
+    if (guttShuddhiEvening) {
+      removeElement(selectedItems, "Gutt Suddhi");
+    } else {
+      addElement(selectedItems, "Gutt Suddhi");
+    }
+
+    setGuttShuddhiEvening(!guttShuddhiEvening);
+  };
+
+  const handleHairWeeklyOneCheckBox = () => {
+    if (hairRasWeekly1) {
+      removeElement(selectedItems, "Hair Ras");
+    } else {
+      addElement(selectedItems, "Hair Ras");
+    }
+
+    setHairRasWeekly1(!hairRasWeekly1);
+  };
+
+  const handleHairWeeklyTwoCheckBox = () => {
+    if (hairRasWeekly2) {
+      removeElement(selectedItems, "Hair Ras");
+    } else {
+      addElement(selectedItems, "Hair Ras");
+    }
+
+    setHairRasWeekly2(!hairRasWeekly2);
+  };
+
+  const handleHairWeeklyThreeCheckBox = () => {
+    if (hairRasWeekly3) {
+      removeElement(selectedItems, "Hair Ras");
+    } else {
+      addElement(selectedItems, "Hair Ras");
+    }
+
+    setHairRasWeekly3(!hairRasWeekly3);
+  };
+
   const handleBackClick = () => {
     navigate(-1);
   };
@@ -99,21 +171,6 @@ function App() {
 
       <div className="bg-white flex-1 w-full pt-20 px-4">
         <div className="relative flex justify-center items-center w-full h-[375px] bg-[#DAEBF1] border border-md mb-4 shadow-lg rounded-lg">
-          {isCelebrating && (
-            <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-white bg-opacity-80 z-10">
-              <div className="relative">
-                <Lottie
-                  animationData={celebrate}
-                  loop={true}
-                  className="w-32 h-32"
-                />
-                <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-lg font-bold text-blue-600">
-                  Wohoo, you've taken your first step into your routine! 🎉
-                </p>
-              </div>
-            </div>
-          )}
-
           {isLoading ? (
             <div className="relative flex items-center justify-center">
               <div className="loader border-t-8 border-[#A1BD13] rounded-full w-20 h-20 animate-spin text-center font-bold text-black"></div>
@@ -180,8 +237,33 @@ function App() {
                 handleCancel={handleCancel}
               />
             </div>
+          ) : hairRasDaily &&
+            guttShuddhiMorning &&
+            guttShuddhiEvening &&
+            hairRasWeekly1 &&
+            hairRasWeekly2 &&
+            hairRasWeekly3 ? (
+            <div className="w-full h-full flex flex-col items-center justify-center bg-white bg-opacity-80 z-10">
+              <div className="flex justify-center items-center flex-col gap-2">
+                <Lottie
+                  animationData={celebrate}
+                  loop={true}
+                  className="w-32 h-32"
+                />
+                <p className="text-lg 2xl:text-2xl font-bold text-[#A1BD13] p-2">
+                  Wohoo, You have earned a reward for your consistent efforts 💪🏼
+                </p>
+              </div>
+            </div>
           ) : (
-            "ADITI SHARMA"
+            <div className="h-full w-full flex justify-start items-center p-2 flex-col">
+              <div className="font-bold text-2xl">Your Selected Items:</div>
+              <div className="flex justify-center items-center p-2 flex-col font-bold">
+                {selectedItems?.map((item) => (
+                  <div>{item}</div>
+                ))}
+              </div>
+            </div>
           )}
         </div>
 
@@ -204,7 +286,7 @@ function App() {
             <div className="flex flex-col items-center">
               <p className="text-md text-blue-400 mb-4">ONCE DAILY</p>
               <div
-                className="flex items-center justify-between mb-3 border border-[1px] border-[#DAEBF1] rounded-md px-2 py-[2px] w-full relative group"
+                className="flex items-center justify-between mb-3 border  border-[#DAEBF1] rounded-md px-2 py-[2px] w-full relative group"
                 style={{
                   backgroundColor: hairRasDaily ? "#F3F7DE" : "transparent",
                   borderColor: hairRasDaily ? "#A1BD13" : "black",
@@ -227,7 +309,7 @@ function App() {
                     height: "15px",
                   }}
                   checked={hairRasDaily}
-                  onChange={() => setHairRasDaily(!hairRasDaily)}
+                  onChange={() => handleHairRasDailyCheckBox()}
                 />
               </div>
             </div>
@@ -252,7 +334,7 @@ function App() {
             <div className="flex flex-col items-center">
               <p className="text-md text-blue-400 mb-4">TWICE DAILY</p>
               <div
-                className="flex items-center justify-between mb-3 border border-[1px] border-black rounded-md px-2 py-[2px] w-full relative group"
+                className="flex items-center justify-between mb-3 border border-black rounded-md px-2 py-[2px] w-full relative group"
                 style={{
                   backgroundColor: guttShuddhiMorning
                     ? "#F3F7DE"
@@ -277,7 +359,7 @@ function App() {
                     height: "15px",
                   }}
                   checked={guttShuddhiMorning}
-                  onChange={() => setGuttShuddhiMorning(!guttShuddhiMorning)}
+                  onChange={() => handleGuttShuddhiMorningCheckBox()}
                 />
               </div>
 
@@ -307,7 +389,7 @@ function App() {
                     height: "15px",
                   }}
                   checked={guttShuddhiEvening}
-                  onChange={() => setGuttShuddhiEvening(!guttShuddhiEvening)}
+                  onChange={() => handleGuttShuddhiEveningCheckBox()}
                 />
               </div>
             </div>
@@ -356,7 +438,7 @@ function App() {
                     height: "15px",
                   }}
                   checked={hairRasWeekly1}
-                  onChange={() => setHairRasWeekly1(!hairRasWeekly1)}
+                  onChange={() => handleHairWeeklyOneCheckBox()}
                 />
               </div>
 
@@ -383,7 +465,7 @@ function App() {
                     height: "15px",
                   }}
                   checked={hairRasWeekly2}
-                  onChange={() => setHairRasWeekly2(!hairRasWeekly2)}
+                  onChange={() => handleHairWeeklyTwoCheckBox()}
                 />
               </div>
 
@@ -411,7 +493,7 @@ function App() {
                     height: "15px",
                   }}
                   checked={hairRasWeekly3}
-                  onChange={() => setHairRasWeekly3(!hairRasWeekly3)}
+                  onChange={() => handleHairWeeklyThreeCheckBox()}
                 />
               </div>
             </div>
